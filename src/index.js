@@ -22,7 +22,7 @@ const {
 
 const repoPath = `https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@${GIT_HOST}/${GITHUB_REPOSITORY}`;
 const localPath = './clone';
-const secondLine = 'Committed via https://github.com/marketplace/actions/contribution-graph';
+const secondLine = 'Committed via https://github.com/marketplace/actions/autopopulate-your-contribution-graph';
 const dayOffsets = [...Array(Number(MAX_DAYS)).keys()];
 const originDay = fromUnixTime(ORIGIN_TIMESTAMP);
 

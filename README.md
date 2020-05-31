@@ -15,7 +15,7 @@
     <img src="https://github.com/bcanseco/github-contribution-graph-action/workflows/audit/badge.svg">
   </a>
 
-  <a href="https://github.com/marketplace/actions/contribution-graph">
+  <a href="https://github.com/marketplace/actions/autopopulate-your-contribution-graph">
     <img src="https://img.shields.io/badge/action-marketplace-orange?logo=github">
   </a>
 
