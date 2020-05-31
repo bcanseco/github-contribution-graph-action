@@ -39,7 +39,7 @@ Use the commands below to build and run a container:
 
 ```console
 $ docker build -t github-contribution-graph-action .
-$ docker run -w /app --rm github-contribution-graph-action
+$ docker run --rm github-contribution-graph-action
 ```
 
 You can alternatively run `npm start` directly without Docker, but this isn't recommended.
