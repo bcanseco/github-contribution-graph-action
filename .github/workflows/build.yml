@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  commitizen:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: outillage/commitsar@master
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: gaurav-nelson/github-action-markdown-link-check@master
+  dogfooding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master # only required for eating our own dog food
+      - uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_EMAIL: borj@cans.eco
+          GIT_BRANCH: gh-pages
+          GIT_COMMIT_MESSAGE: 'chore(actions): dogfooding triggered by push'

@@ -1,0 +1,16 @@
+name: audit
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+  - cron: '0 12 * * *' # every day at noon
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - run: npm audit --production

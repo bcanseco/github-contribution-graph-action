@@ -1,0 +1,9 @@
+name: 'Autopopulate your contribution graph'
+author: 'Borja Canseco <borj@cans.eco>'
+description: 'This action will automatically push empty commits to one of your GitHub repos.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'grid'
+  color: 'green'
