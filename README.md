@@ -28,6 +28,8 @@
   </a>
 </p>
 
+> Maybe most of your coding happens on another version control host, like GitLab or Bitbucket. Maybe your company uses GitHub Enterprise but hasn't enabled [unified contributions](https://help.github.com/en/enterprise/2.15/admin/installation/enabling-unified-contributions-between-github-enterprise-server-and-githubcom). Maybe you're looking for a new software development job and are worried that recruiters will prejudge you by your scarce contribution graph. Or maybe you have [other reasons](https://twitter.com/jacobmparis/status/1265740598277025792). Whatever the case may be, you've come to the right place.
+
 ## Quick start without leaving your browser ⚡
 
 1. [Create a new repo](https://github.com/new) (preferably private)
