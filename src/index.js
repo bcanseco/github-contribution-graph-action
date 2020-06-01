@@ -3,6 +3,7 @@ import subDays from 'date-fns/fp/subDays';
 import getUnixTime from 'date-fns/fp/getUnixTime';
 import fromUnixTime from 'date-fns/fp/fromUnixTime';
 import isWeekend from 'date-fns/fp/isWeekend';
+import {getRandomInt} from './random';
 
 const {
   GITHUB_ACTOR,
@@ -18,6 +19,8 @@ const {
   MAX_DAYS = 1,
   INCLUDE_WEEKDAYS = true,
   INCLUDE_WEEKENDS = true,
+  MIN_COMMITS_PER_DAY = 1,
+  MAX_COMMITS_PER_DAY = 1,
 } = process.env;
 
 const repoPath = `https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@${GIT_HOST}/${GITHUB_REPOSITORY}`;
@@ -35,13 +38,17 @@ const commitCreators = dayOffsets
   .map((dayOffset) => subDays(dayOffset, originDay))
   .filter((day) => !(!JSON.parse(INCLUDE_WEEKENDS) && isWeekend(day)))
   .filter((day) => !(!JSON.parse(INCLUDE_WEEKDAYS) && !isWeekend(day)))
-  .map((day) => async () => {
-    const {commit: sha} = await git(localPath).commit([GIT_COMMIT_MESSAGE, secondLine], {
-      '--allow-empty': null,
-      '--date': `format:iso8601:${day.toISOString()}`,
+  .map((/** @type {Date} */ day) => {
+    const commitsToMake = getRandomInt(MIN_COMMITS_PER_DAY, MAX_COMMITS_PER_DAY);
+    return [...Array(commitsToMake)].map((_, i) => async () => {
+      const {commit: sha} = await git(localPath).commit([GIT_COMMIT_MESSAGE, secondLine], {
+        '--allow-empty': null,
+        '--date': `format:iso8601:${day.toISOString()}`,
+      });
+      console.log(`Successfully committed ${sha} on ${day.toISOString()} (${i + 1} / ${commitsToMake})`);
     });
-    console.log(`Successfully committed ${sha}`);
-  });
+  })
+  .flat();
 
 await commitCreators.reduce((p, nextPromise) => p.then(nextPromise), Promise.resolve());
 await git(localPath).push(repoPath, GIT_BRANCH);
