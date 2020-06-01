@@ -11,6 +11,10 @@
     <img src="https://github.com/bcanseco/github-contribution-graph-action/workflows/build/badge.svg">
   </a>
 
+  <a href="https://github.com/bcanseco/github-contribution-graph-action/actions?query=workflow%3Atests">
+    <img src="https://github.com/bcanseco/github-contribution-graph-action/workflows/tests/badge.svg">
+  </a>
+
   <a href="https://github.com/bcanseco/github-contribution-graph-action/actions?query=workflow%3Aaudit">
     <img src="https://github.com/bcanseco/github-contribution-graph-action/workflows/audit/badge.svg">
   </a>
