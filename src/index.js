@@ -49,6 +49,6 @@ await dayOffsets
     });
   })
   .flat()
-  .reduce((p, nextPromise) => p.then(nextPromise), Promise.resolve());
+  .reduce((commitPromises, nextPromise) => commitPromises.then(nextPromise), Promise.resolve());
 
 await git(localPath).push(repoPath, GIT_BRANCH);
