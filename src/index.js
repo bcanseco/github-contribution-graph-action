@@ -34,7 +34,7 @@ await git(localPath).env({GIT_SSH_COMMAND});
 await git(localPath).addConfig('user.name', GITHUB_ACTOR);
 await git(localPath).addConfig('user.email', GIT_EMAIL);
 
-const commitCreators = dayOffsets
+await dayOffsets
   .map((dayOffset) => subDays(dayOffset, originDay))
   .filter((day) => !(!JSON.parse(INCLUDE_WEEKENDS) && isWeekend(day)))
   .filter((day) => !(!JSON.parse(INCLUDE_WEEKDAYS) && !isWeekend(day)))
@@ -48,7 +48,7 @@ const commitCreators = dayOffsets
       console.log(`Successfully committed ${sha} on ${day.toISOString()} (${i + 1} / ${commitsToMake})`);
     });
   })
-  .flat();
+  .flat()
+  .reduce((p, nextPromise) => p.then(nextPromise), Promise.resolve());
 
-await commitCreators.reduce((p, nextPromise) => p.then(nextPromise), Promise.resolve());
 await git(localPath).push(repoPath, GIT_BRANCH);
