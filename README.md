@@ -38,7 +38,7 @@
    ![](./.github/images/create-new-file.png)
 1. In the **Name your file...** field, type in `.github/workflows/main.yml`
    ![](./.github/images/name-new-file.png)
-1. Paste in one of the YAML file contents below, depending on what you want to do.
+1. Paste in one of the YAML file contents below, depending on what you want to do. Be sure to update `GIT_EMAIL`.
 1. Click the **Commit new file** button at the bottom of the page. You're all set!
 
 If you change your mind about these commits later, you can delete the repository and they'll disappear from your contribution graph.
