@@ -99,8 +99,8 @@ Keep reading for more cool stuff like:
 
 | Key                   | Description                                                                                                                   | Default value                                         | Required? |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|-----------|
-| `GITHUB_TOKEN`        | Allows this GitHub Action to make commits for you. Simply pass in `${{ secrets.GITHUB_TOKEN }}`. [Read more](#github_token-). |                                                       |    🟩    |
-| `GIT_EMAIL`           | An email address associated with your GitHub account. Without this, contributions won't show up. [Read more](#git_email-).    |                                                       |    🟩    |
+| `GITHUB_TOKEN`        | Allows this GitHub Action to make commits for you. Simply pass in `${{ secrets.GITHUB_TOKEN }}`. [Read more](#github_token-). |                                                       |    🟩     |
+| `GIT_EMAIL`           | An email address associated with your GitHub account. Without this, contributions won't show up. [Read more](#git_email-).    |                                                       |    🟩     |
 | `GIT_BRANCH`          | Must either be the default branch (usually `master`) or `gh-pages` for contributions to show up.                              | `master`                                              |           |
 | `GIT_COMMIT_MESSAGE`  | The message to use for commits made by this GitHub Action.                                                                    | `chore(actions): empty commit for contribution graph` |           |
 | `ORIGIN_TIMESTAMP`    | The unix timestamp to start commits on. If you set `MAX_DAYS` greater than 1, commits will be made on days prior to this time.| The current timestamp                                 |           |
