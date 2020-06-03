@@ -33,7 +33,7 @@
 
 ## Quick start without leaving your browser ⚡
 
-1. [Create a new repo](https://github.com/new) (preferably private)
+1. [Create a new repo](https://github.com/new) (preferably private unless you have no shame)
 1. Click on **Create a new file**  
    ![](./.github/images/create-new-file.png)
 1. In the **Name your file...** field, type in `.github/workflows/main.yml`
