@@ -147,7 +147,7 @@ As far as data security, there's two sensitive pieces of data that this Action h
 
 ### `GITHUB_TOKEN` 🔑
 
-GitHub has [a great article](https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#using-the-github_token-in-a-workflow) about the token. It's the standard way that all GitHub Actions interact with GitHub on your behalf. The permissions of this token are both short-lived scoped to the repo only.
+GitHub has [a great article](https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#using-the-github_token-in-a-workflow) about the token. It's the standard way that all GitHub Actions interact with GitHub on your behalf. The permissions of this token are both short-lived and scoped to one repo only.
 
 You don't need to create this secret yourself; GitHub handles that for you. All you need to do is provide the token in your workflow, job, or step:
 
