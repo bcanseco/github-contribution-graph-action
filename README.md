@@ -107,10 +107,10 @@ Keep reading for more cool stuff like:
 | `GIT_COMMIT_MESSAGE`  | The message to use for commits made by this GitHub Action.                                                                     | `chore(actions): empty commit for contribution graph` |           |
 | `ORIGIN_TIMESTAMP`    | The unix timestamp to start commits on. If you set `MAX_DAYS` greater than 1, commits will be made on days prior to this time. | The current timestamp                                 |           |
 | `MAX_DAYS`            | The maximum integer number of days to commit on. If you want to backfill a year of commits, set this to `365`.                 | `1`                                                   |           |
-| `INCLUDE_WEEKDAYS`    | A boolean indicating whether or not to make commits on weekdays.                                                               | `true`                                                |           |
-| `INCLUDE_WEEKENDS`    | A boolean indicating whether or not to make commits on weekends.                                                               | `true`                                                |           |
 | `MIN_COMMITS_PER_DAY` | The minimum integer number of commits to make per day (inclusive). Used by a pseudo-RNG.                                       | `1`                                                   |           |
 | `MAX_COMMITS_PER_DAY` | The maximum integer number of commits to make per day (inclusive). Used by a pseudo-RNG.                                       | `1`                                                   |           |
+| `INCLUDE_WEEKDAYS`    | A boolean indicating whether or not to make commits on weekdays.                                                               | `true`                                                |           |
+| `INCLUDE_WEEKENDS`    | A boolean indicating whether or not to make commits on weekends.                                                               | `true`                                                |           |
 | `FORCE_PUSH`          | A boolean indicating whether or not to force push. **WARNING:** Setting this to `true` will clear out your repo on each run!   | `false`                                               |           |
 
 ### Advanced environment variables 🧙‍♂️

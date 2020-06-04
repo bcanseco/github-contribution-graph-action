@@ -18,10 +18,10 @@ const {
 
   ORIGIN_TIMESTAMP = getUnixTime(new Date()),
   MAX_DAYS = 1,
-  INCLUDE_WEEKDAYS = true,
-  INCLUDE_WEEKENDS = true,
   MIN_COMMITS_PER_DAY = 1,
   MAX_COMMITS_PER_DAY = 1,
+  INCLUDE_WEEKDAYS = true,
+  INCLUDE_WEEKENDS = true,
   FORCE_PUSH = false,
 } = process.env;
 
