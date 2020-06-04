@@ -1,3 +1,4 @@
+import fs from 'fs/promises';
 import git from 'simple-git/promise';
 import subDays from 'date-fns/fp/subDays';
 import getUnixTime from 'date-fns/fp/getUnixTime';
@@ -21,6 +22,7 @@ const {
   INCLUDE_WEEKENDS = true,
   MIN_COMMITS_PER_DAY = 1,
   MAX_COMMITS_PER_DAY = 1,
+  FORCE_PUSH = false,
 } = process.env;
 
 const repoPath = `https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@${GIT_HOST}/${GITHUB_REPOSITORY}`;
@@ -29,7 +31,14 @@ const secondLine = 'Committed via https://github.com/marketplace/actions/autopop
 const dayOffsets = [...Array(Number(MAX_DAYS)).keys()];
 const originDay = fromUnixTime(ORIGIN_TIMESTAMP);
 
-await git().clone(repoPath, localPath, ['--single-branch', '-b', GIT_BRANCH]);
+await fs.mkdir(localPath);
+
+if (JSON.parse(FORCE_PUSH)) {
+  await git(localPath).init();
+} else {
+  await git().clone(repoPath, localPath, ['--single-branch', '-b', GIT_BRANCH]);
+}
+
 await git(localPath).env({GIT_SSH_COMMAND});
 await git(localPath).addConfig('user.name', GITHUB_ACTOR);
 await git(localPath).addConfig('user.email', GIT_EMAIL);
@@ -51,4 +60,4 @@ await dayOffsets
   .flat()
   .reduce((commitPromises, nextPromise) => commitPromises.then(nextPromise), Promise.resolve());
 
-await git(localPath).push(repoPath, GIT_BRANCH);
+await git(localPath).push(repoPath, GIT_BRANCH, JSON.parse(FORCE_PUSH) && {'--force': null});

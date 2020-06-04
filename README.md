@@ -111,6 +111,7 @@ Keep reading for more cool stuff like:
 | `INCLUDE_WEEKENDS`    | A boolean indicating whether or not to make commits on weekends.                                                               | `true`                                                |           |
 | `MIN_COMMITS_PER_DAY` | The minimum integer number of commits to make per day (inclusive). Used by a pseudo-RNG.                                       | `1`                                                   |           |
 | `MAX_COMMITS_PER_DAY` | The maximum integer number of commits to make per day (inclusive). Used by a pseudo-RNG.                                       | `1`                                                   |           |
+| `FORCE_PUSH`          | A boolean indicating whether or not to force push. **WARNING:** Setting this to `true` will clear out your repo on each run!   | `false`                                               |           |
 
 ### Advanced environment variables 🧙‍♂️
 
