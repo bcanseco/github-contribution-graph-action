@@ -2,15 +2,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node --experimental-top-level-await --experimental-specifier-resolution=node -r dotenv-safe/config src",
+    "start": "node --experimental-top-level-await --experimental-specifier-resolution=node src",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
   },
   "engines": {
     "node": ">=14.3.0"
   },
   "dependencies": {
+    "auto-parse": "^1.8.0",
     "date-fns": "^2.14.0",
-    "dotenv-safe": "^8.2.0",
+    "dotenv-extended": "^2.8.0",
     "simple-git": "^2.5.0"
   },
   "devDependencies": {
