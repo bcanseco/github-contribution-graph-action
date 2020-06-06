@@ -12,11 +12,10 @@ const env = autoParse({
   ORIGIN_TIMESTAMP: process.env.ORIGIN_TIMESTAMP || getUnixTime(new Date()),
   ...dotenv.load({errorOnMissing: true, includeProcessEnv: true}),
 });
-const repoPath = `https://${env.GITHUB_ACTOR}:${env.GITHUB_TOKEN}@${env.GIT_HOST}/${env.GITHUB_REPOSITORY}`;
 const localPath = './clone';
+const repoPath = `https://${env.GITHUB_ACTOR}:${env.GITHUB_TOKEN}@${env.GIT_HOST}/${env.GITHUB_REPOSITORY}`;
 const secondLine = 'Committed via https://github.com/marketplace/actions/autopopulate-your-contribution-graph';
 const dayOffsets = [...Array(env.MAX_DAYS).keys()];
-const originDay = fromUnixTime(env.ORIGIN_TIMESTAMP);
 
 await fs.mkdir(localPath);
 
@@ -31,7 +30,7 @@ await git(localPath).addConfig('user.name', env.GITHUB_ACTOR);
 await git(localPath).addConfig('user.email', env.GIT_EMAIL);
 
 await dayOffsets
-  .map((dayOffset) => subDays(dayOffset, originDay))
+  .map((dayOffset) => subDays(dayOffset, fromUnixTime(env.ORIGIN_TIMESTAMP)))
   .filter((day) => !(!env.INCLUDE_WEEKENDS && isWeekend(day)))
   .filter((day) => !(!env.INCLUDE_WEEKDAYS && !isWeekend(day)))
   .map((/** @type {Date} */ day) => {

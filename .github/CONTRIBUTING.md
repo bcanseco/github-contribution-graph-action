@@ -65,3 +65,17 @@ Two reasons:
 
 1. GitHub transforms input parameter casing and prepends `INPUT_`, so additional code would be necessary to revert this before processing them.
 1. Input parameters are expected to be documented in the [action definition](../action.yml), which would be yet another source of truth to maintain.
+
+### Why not add a cool `CUSTOM_TEXT` feature for writing on the grid? 🎨
+
+This is a great idea! In theory, this GitHub Action could re-draw your custom string of text every week or so. That way it stays in the center of your contribution graph.
+
+Unfortunately though, commits made on a GitHub repository will always show on the graph even if those commits are later removed through a force push. This means that every time we would try to re-draw, the old text would remain on your graph.
+
+You can already imagine the consequences:
+
+* Text overlapping
+* Seeing last year's strings cut-off
+* Repeated text
+
+A workaround involves deleting and recreating the GitHub repo for the user on each run, but that requires permissions that the `GITHUB_TOKEN` doesn't provide. For now I'm calling this out-of-scope, but feel free to open an issue if you have any ideas.
