@@ -14,3 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - run: npm audit --production
+  codeql:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: github/codeql-action/init@master
+    - uses: github/codeql-action/analyze@master
