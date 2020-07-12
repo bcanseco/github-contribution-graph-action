@@ -30,7 +30,7 @@ await git(localPath).addConfig('user.name', env.GITHUB_ACTOR);
 await git(localPath).addConfig('user.email', env.GIT_EMAIL);
 
 await dayOffsets
-  .map((dayOffset) => subDays(dayOffset, fromUnixTime(env.ORIGIN_TIMESTAMP)))
+  .map((dayOffset) => subDays(fromUnixTime(env.ORIGIN_TIMESTAMP), dayOffset))
   .filter((day) => !(!env.INCLUDE_WEEKENDS && isWeekend(day)))
   .filter((day) => !(!env.INCLUDE_WEEKDAYS && !isWeekend(day)))
   .map((/** @type {Date} */ day) => {
