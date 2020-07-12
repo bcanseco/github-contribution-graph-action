@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: outillage/commitsar@master
+    - uses: aevea/commitsar@master
   markdown:
     runs-on: ubuntu-latest
     steps:
