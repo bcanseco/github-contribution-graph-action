@@ -31,6 +31,7 @@ Thanks for considering a contribution to this project! 🙏
      * Make sure to check the **Repo** boxes.
      * Note that the personal access token has more permissions than the `GITHUB_TOKEN` provided by the Actions runner. Read more about this [here](https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#permissions-for-the-github_token).
    * `GIT_EMAIL`: Set this to [an email associated with your GitHub account](https://github.com/settings/emails).
+   * `GIT_BRANCH`: Set this to `master`.
 1. Make sure your Docker daemon is running.
 
 ### Running 👟

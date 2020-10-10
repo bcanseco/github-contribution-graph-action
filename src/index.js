@@ -9,6 +9,7 @@ import git from 'simple-git/promise';
 import {getRandomInt} from './random';
 
 const env = autoParse({
+  GIT_BRANCH: process.env.GIT_BRANCH || process.env.GITHUB_REF.replace(/^refs\/heads\//, ''),
   ORIGIN_TIMESTAMP: process.env.ORIGIN_TIMESTAMP || getUnixTime(new Date()),
   ...dotenv.load({errorOnMissing: true, includeProcessEnv: true}),
 });
