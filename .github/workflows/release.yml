@@ -1,0 +1,13 @@
+name: release
+
+on:
+  release:
+    types: [published, edited]
+
+jobs:
+  latest-major-version-tagger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-r-us/actions-tagger@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
