@@ -18,7 +18,7 @@ Thanks for considering a contribution to this project! 🙏
    ```
 1. Create an `.env` file:
    ```console
-   $ cp .env.example .env
+   $ cp .env.schema .env
    ```
 1. Fill in the values.
    * `GITHUB_ACTOR`: Set this to your GitHub username.
