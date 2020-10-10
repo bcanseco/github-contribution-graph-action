@@ -58,7 +58,7 @@ jobs:
   single-commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: bcanseco/github-contribution-graph-action@master
+    - uses: bcanseco/github-contribution-graph-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GIT_EMAIL: you@youremail.com # replace me
@@ -81,7 +81,7 @@ jobs:
   backfill-commits:
     runs-on: ubuntu-latest
     steps:
-    - uses: bcanseco/github-contribution-graph-action@master
+    - uses: bcanseco/github-contribution-graph-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GIT_EMAIL: you@youremail.com # replace me
@@ -139,8 +139,8 @@ Speaking of dependencies, all production npm dependencies used by this GitHub Ac
 If you're still worried about malicious code in this repository, GitHub recommends always using a specific version of any GitHub Actions you add to your repositories. [Read more](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses).
 
 ```diff
-- uses: bcanseco/github-contribution-graph-action@master
-+ uses: bcanseco/github-contribution-graph-action@v1
+- uses: bcanseco/github-contribution-graph-action@v1
++ uses: bcanseco/github-contribution-graph-action@1.2.0
 ```
 
 As far as data security, there's two sensitive pieces of data that this Action handles:
