@@ -5,11 +5,11 @@ import fromUnixTime from 'date-fns/fp/fromUnixTime';
 import subDays from 'date-fns/fp/subDays';
 import isWeekend from 'date-fns/fp/isWeekend';
 import fs from 'fs/promises';
-import git from 'simple-git/promise';
+import git from 'simple-git';
 import {getRandomInt} from './random';
 
 const env = autoParse({
-  GIT_BRANCH: process.env.GIT_BRANCH || process.env.GITHUB_REF.replace(/^refs\/heads\//, ''),
+  GIT_BRANCH: process.env.GIT_BRANCH || process.env.GITHUB_REF?.replace(/^refs\/heads\//, ''),
   ORIGIN_TIMESTAMP: process.env.ORIGIN_TIMESTAMP || getUnixTime(new Date()),
   ...dotenv.load({errorOnMissing: true, includeProcessEnv: true}),
 });

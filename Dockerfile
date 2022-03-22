@@ -1,5 +1,4 @@
-# This version of Node.js or later is required for top-level await.
-FROM node:14.3.0
+FROM node:16.11.1
 
 # When running as a GitHub Action, the WORKDIR is controlled by GitHub.
 # Furthermore, they recommend NOT setting it in the Dockerfile, which makes running locally difficult.
