@@ -12,10 +12,10 @@
     "auto-parse": "^1.8.0",
     "date-fns": "^2.14.0",
     "dotenv-extended": "^2.8.0",
-    "simple-git": "^2.5.0"
+    "simple-git": "^3.4.0"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
-    "jest": "^26.0.1"
+    "jest": "^27.5.1"
   }
 }
