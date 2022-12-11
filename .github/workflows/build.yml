@@ -18,6 +18,8 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        config-file: markdown_link_check_config.json
   dogfooding:
     runs-on: ubuntu-latest
     steps:

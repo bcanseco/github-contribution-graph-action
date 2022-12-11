@@ -27,9 +27,9 @@ Thanks for considering a contribution to this project! 🙏
    * `GITHUB_REPOSITORY`: Set this to your username followed by a slash and your repository name.
      * e.g. `bcanseco/github-contribution-graph-action`
      * Again, this is only necessary when running locally.
-   * `GITHUB_TOKEN`: Set this to [your personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+   * `GITHUB_TOKEN`: Set this to [your personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
      * Make sure to check the **Repo** boxes.
-     * Note that the personal access token has more permissions than the `GITHUB_TOKEN` provided by the Actions runner. Read more about this [here](https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#permissions-for-the-github_token).
+     * Note that the personal access token has more permissions than the `GITHUB_TOKEN` provided by the Actions runner. Read more about this [here](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token).
    * `GIT_EMAIL`: Set this to [an email associated with your GitHub account](https://github.com/settings/emails).
    * `GIT_BRANCH`: Set this to `master`.
 1. Make sure your Docker daemon is running.
@@ -60,7 +60,7 @@ For some reason, the GitHub Actions runner mutates ISO timestamp strings passed 
 
 ### Why use environment variables instead of [inputs][inputs]? 🔌
 
-[inputs]: https://help.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs
+[inputs]: https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs
 
 Two reasons:
 
