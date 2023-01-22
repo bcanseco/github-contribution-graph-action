@@ -22,6 +22,8 @@ jobs:
         config-file: markdown_link_check_config.json
   dogfooding:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@master # only required for eating our own dog food
       - uses: ./

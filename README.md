@@ -57,6 +57,8 @@ on:
 jobs:
   single-commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: bcanseco/github-contribution-graph-action@v2
       env:
@@ -78,6 +80,8 @@ on: push
 jobs:
   backfill-commits:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: bcanseco/github-contribution-graph-action@v2
       env:
@@ -156,6 +160,14 @@ You don't need to create this secret yourself; GitHub handles that for you. All 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+#### Getting 403 errors? ❌
+
+Make sure your token has [write permission for the `contents` scope](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs). If you're using the examples in this README, this is already done for you.
+
+You can alternatively set this as a repo-level default:
+
+![](./.github/images/token-permissions.png)
 
 ### `GIT_EMAIL` 📧
 
