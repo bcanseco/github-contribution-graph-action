@@ -47,4 +47,4 @@ await dayOffsets
   .flat()
   .reduce((commitPromises, nextPromise) => commitPromises.then(nextPromise), Promise.resolve());
 
-await git(localPath).push(repoPath, env.GIT_BRANCH, env.FORCE_PUSH && {'--force': null});
+await git(localPath).push(repoPath, `HEAD:${env.GIT_BRANCH}`, env.FORCE_PUSH && {'--force': null});
