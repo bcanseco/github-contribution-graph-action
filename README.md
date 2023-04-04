@@ -62,7 +62,7 @@ jobs:
     steps:
     - uses: bcanseco/github-contribution-graph-action@v2
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         GIT_EMAIL: you@youremail.com # replace me
 ```
 
@@ -85,7 +85,7 @@ jobs:
     steps:
     - uses: bcanseco/github-contribution-graph-action@v2
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         GIT_EMAIL: you@youremail.com # replace me
         MAX_DAYS: 365
         MIN_COMMITS_PER_DAY: 1
@@ -103,7 +103,7 @@ Keep reading for more cool stuff like:
 
 | Key                   | Description                                                                                                                    | Default value                                         | Required? |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|-----------|
-| `GITHUB_TOKEN`        | Allows this GitHub Action to make commits for you. Simply pass in `${{ secrets.GITHUB_TOKEN }}`. [Read more](#github_token-).  |                                                       |    🟩     |
+| `GITHUB_TOKEN`        | Allows this GitHub Action to make commits for you. Simply pass in `${{ secrets.GH_TOKEN }}`. [Read more](#github_token-).  |                                                       |    🟩     |
 | `GIT_EMAIL`           | An email address associated with your GitHub account. Without this, contributions won't show up. [Read more](#git_email-).     |                                                       |    🟩     |
 | `GIT_BRANCH`          | Must either be the default branch or `gh-pages` for contributions to show up.                                                  | The branch that triggered this Github Action          |           |
 | `GIT_COMMIT_MESSAGE`  | The message to use for commits made by this GitHub Action.                                                                     | `chore(actions): empty commit for contribution graph` |           |
@@ -158,7 +158,7 @@ You don't need to create this secret yourself; GitHub handles that for you. All 
 
 ```yml
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 ```
 
 #### Getting 403 errors? ❌
