@@ -114,6 +114,7 @@ Keep reading for more cool stuff like:
 | `INCLUDE_WEEKDAYS`    | A boolean indicating whether or not to make commits on weekdays.                                                               | `true`                                                |           |
 | `INCLUDE_WEEKENDS`    | A boolean indicating whether or not to make commits on weekends.                                                               | `true`                                                |           |
 | `FORCE_PUSH`          | A boolean indicating whether or not to force push. **WARNING:** Setting this to `true` will clear out your repo on each run!   | `false`                                               |           |
+| `PERCENT_DAYS`        | An integer specifying the percent of days in the time period that should have commits. The exact date is chosen randomly.      | `100`                                                 |           |
 
 ### Advanced environment variables 🧙‍♂️
 
