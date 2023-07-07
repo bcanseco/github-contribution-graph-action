@@ -30,12 +30,11 @@ await git(localPath).env({GIT_SSH_COMMAND: env.GIT_SSH_COMMAND});
 await git(localPath).addConfig('user.name', env.GITHUB_ACTOR);
 await git(localPath).addConfig('user.email', env.GIT_EMAIL);
 
-let percent = 70;
 await dayOffsets
   .map((dayOffset) => subDays(dayOffset, fromUnixTime(env.ORIGIN_TIMESTAMP)))
   .filter((day) => !(!env.INCLUDE_WEEKENDS && isWeekend(day)))
   .filter((day) => !(!env.INCLUDE_WEEKDAYS && !isWeekend(day)))
-  .filter((day) => (Math.floor(Math.random() * 100) < percent))
+  .filter((day) => (Math.floor(Math.random() * 100) < env.PERCENT_DAYS))
   .map((/** @type {Date} */ day) => {
     const commitsToMake = getRandomInt(env.MIN_COMMITS_PER_DAY, env.MAX_COMMITS_PER_DAY);
     return [...Array(commitsToMake)].map((_, i) => async () => {
