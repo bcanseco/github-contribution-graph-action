@@ -34,6 +34,7 @@ await dayOffsets
   .map((dayOffset) => subDays(dayOffset, fromUnixTime(env.ORIGIN_TIMESTAMP)))
   .filter((day) => !(!env.INCLUDE_WEEKENDS && isWeekend(day)))
   .filter((day) => !(!env.INCLUDE_WEEKDAYS && !isWeekend(day)))
+  .filter((day) => (Math.floor(Math.random() * 100) < env.PERCENT_DAYS))
   .map((/** @type {Date} */ day) => {
     const commitsToMake = getRandomInt(env.MIN_COMMITS_PER_DAY, env.MAX_COMMITS_PER_DAY);
     return [...Array(commitsToMake)].map((_, i) => async () => {
