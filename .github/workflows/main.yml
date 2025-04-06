@@ -1,0 +1,21 @@
+on:
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  single-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Docker action
+        uses: .
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_EMAIL: amackzie@gmail.com
+          MAX_DAYS: 365
+          MIN_COMMITS_PER_DAY: 0
+          MAX_COMMITS_PER_DAY: 5
