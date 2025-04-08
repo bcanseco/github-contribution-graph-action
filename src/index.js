@@ -39,7 +39,7 @@ await git(localPath).addConfig("user.email", env.GIT_EMAIL);
 
 await dayOffsets
   .map((dayOffset) => subDays(dayOffset, fromUnixTime(env.ORIGIN_TIMESTAMP)))
-  .filter((day) => env.INCLUDE_WEEKENDS && isWeekend(day))
+  .filter((day) => !env.INCLUDE_WEEKENDS && isWeekend(day))
   .map((/** @type {Date} */ day) => {
     const commitsToMake = getRandomInt(
       env.MIN_COMMITS_PER_DAY,
