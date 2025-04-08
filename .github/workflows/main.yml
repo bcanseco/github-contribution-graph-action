@@ -1,6 +1,8 @@
 on:
   schedule:
     - cron: "0 12 * * *"
+  push:
+    branches: [ master ]
 
 jobs:
   single-commit:
@@ -19,3 +21,8 @@ jobs:
           MAX_DAYS: 365
           MIN_COMMITS_PER_DAY: 0
           MAX_COMMITS_PER_DAY: 5
+          GIT_HOST: "github.com"
+          GIT_BRANCH: ${{ github.ref_name }}
+          GIT_COMMIT_MESSAGE: "chore: update contribution graph"
+          INCLUDE_WEEKENDS: "true"
+          FORCE_PUSH: "false"
