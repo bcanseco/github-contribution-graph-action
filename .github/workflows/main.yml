@@ -18,6 +18,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_EMAIL: amackzie@gmail.com
+          GIT_HOST: "github.com"
+          GIT_BRANCH: ${{ github.ref_name }}
+          GIT_COMMIT_MESSAGE: "chore: update contribution graph"
+          MAX_DAYS: 365
+          MIN_COMMITS_PER_DAY: 0
+          MAX_COMMITS_PER_DAY: 5
+          INCLUDE_WEEKENDS: "true"
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_EMAIL: amackzie@gmail.com
