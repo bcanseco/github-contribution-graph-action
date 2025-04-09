@@ -20,14 +20,14 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
           GIT_COMMIT_MESSAGE: "chore: update contribution graph"
           MAX_DAYS: 400
-          MIN_COMMITS_PER_DAY: 0
+          MIN_COMMITS_PER_DAY: 1
           MAX_COMMITS_PER_DAY: 5
           INCLUDE_WEEKENDS: "true"
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_EMAIL: amackzie@gmail.com
           MAX_DAYS: 400
-          MIN_COMMITS_PER_DAY: 0
+          MIN_COMMITS_PER_DAY: 1
           MAX_COMMITS_PER_DAY: 5
           GIT_HOST: "github.com"
           GIT_BRANCH: ${{ github.ref_name }}
