@@ -17,3 +17,4 @@ jobs:
           GIT_EMAIL: amackzie@gmail.com
           MIN_COMMITS_PER_DAY: 0
           MAX_COMMITS_PER_DAY: 5
+          MAX_DAYS: 365
