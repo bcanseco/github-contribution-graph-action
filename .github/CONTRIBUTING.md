@@ -52,7 +52,7 @@ You can alternatively run `npm start` directly without Docker, but this isn't re
 Two reasons:
 
 1. For things like this that mess with the `git` CLI directly, it's easier to test with containers.
-1. You cannot currently specify an [npm run-script](https://docs.npmjs.com/cli/run-script) (e.g. `npm start`) as an entrypoint with JavaScript actions.
+1. You cannot currently specify an [npm run-script](https://docs.npmjs.com/cli/v8/commands/npm-run-script) (e.g. `npm start`) as an entrypoint with JavaScript actions.
 
 ### Why go with Unix rather than ISO for `ORIGIN_TIMESTAMP`? ⌚
 
