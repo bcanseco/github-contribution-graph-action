@@ -18,33 +18,51 @@ const repoPath = `https://${env.GITHUB_ACTOR}:${env.GITHUB_TOKEN}@${env.GIT_HOST
 const secondLine = 'Committed via https://github.com/marketplace/actions/autopopulate-your-contribution-graph';
 const dayOffsets = [...Array(env.MAX_DAYS).keys()];
 
-await fs.mkdir(localPath);
+async function run() {
+  try {
+    await fs.mkdir(localPath);
 
-if (env.FORCE_PUSH) {
-  await git(localPath).init();
-} else {
-  await git().clone(repoPath, localPath, ['--single-branch', '-b', env.GIT_BRANCH]);
+    let gitInstance;
+    if (env.FORCE_PUSH) {
+      gitInstance = git(localPath);
+      await gitInstance.init();
+    } else {
+      gitInstance = git();
+      await gitInstance.clone(repoPath, localPath, ['--single-branch', '-b', env.GIT_BRANCH]);
+    }
+
+    await gitInstance.env({ GIT_SSH_COMMAND: env.GIT_SSH_COMMAND });
+    await gitInstance.addConfig('user.name', env.GITHUB_ACTOR);
+    await gitInstance.addConfig('user.email', env.GIT_EMAIL);
+
+    await Promise.all(
+      dayOffsets
+        .map((dayOffset) => subDays(dayOffset, fromUnixTime(env.ORIGIN_TIMESTAMP)))
+        .filter((day) => !(!env.INCLUDE_WEEKENDS && isWeekend(day)))
+        .filter((day) => !(!env.INCLUDE_WEEKDAYS && !isWeekend(day)))
+        .map(async (/** @type {Date} */ day) => {
+          const commitsToMake = getRandomInt(env.MIN_COMMITS_PER_DAY, env.MAX_COMMITS_PER_DAY);
+          return Promise.all(
+            [...Array(commitsToMake)].map(async (_, i) => {
+              try {
+                const { commit: sha } = await gitInstance.commit([env.GIT_COMMIT_MESSAGE, secondLine], {
+                  '--allow-empty': null,
+                  '--date': `format:iso8601:${day.toISOString()}`,
+                });
+                console.log(`Successfully committed ${sha} on ${day.toISOString()} (${i + 1} / ${commitsToMake})`);
+              } catch (error) {
+                console.error(`Error committing to git: ${error.message}`);
+              }
+            })
+          );
+        })
+    );
+
+    await gitInstance.push(repoPath, `HEAD:${env.GIT_BRANCH}`, env.FORCE_PUSH && { '--force': null });
+    console.log('Successfully pushed changes to git.');
+  } catch (error) {
+    console.error(`Error running script: ${error.message}`);
+  }
 }
 
-await git(localPath).env({GIT_SSH_COMMAND: env.GIT_SSH_COMMAND});
-await git(localPath).addConfig('user.name', env.GITHUB_ACTOR);
-await git(localPath).addConfig('user.email', env.GIT_EMAIL);
-
-await dayOffsets
-  .map((dayOffset) => subDays(dayOffset, fromUnixTime(env.ORIGIN_TIMESTAMP)))
-  .filter((day) => !(!env.INCLUDE_WEEKENDS && isWeekend(day)))
-  .filter((day) => !(!env.INCLUDE_WEEKDAYS && !isWeekend(day)))
-  .map((/** @type {Date} */ day) => {
-    const commitsToMake = getRandomInt(env.MIN_COMMITS_PER_DAY, env.MAX_COMMITS_PER_DAY);
-    return [...Array(commitsToMake)].map((_, i) => async () => {
-      const {commit: sha} = await git(localPath).commit([env.GIT_COMMIT_MESSAGE, secondLine], {
-        '--allow-empty': null,
-        '--date': `format:iso8601:${day.toISOString()}`,
-      });
-      console.log(`Successfully committed ${sha} on ${day.toISOString()} (${i + 1} / ${commitsToMake})`);
-    });
-  })
-  .flat()
-  .reduce((commitPromises, nextPromise) => commitPromises.then(nextPromise), Promise.resolve());
-
-await git(localPath).push(repoPath, `HEAD:${env.GIT_BRANCH}`, env.FORCE_PUSH && {'--force': null});
+run();
