@@ -5,7 +5,7 @@ import fromUnixTime from 'date-fns/fp/fromUnixTime';
 import subDays from 'date-fns/fp/subDays';
 import isWeekend from 'date-fns/fp/isWeekend';
 import fs from 'fs/promises';
-import git from 'simple-git';
+import { simpleGit as git} from 'simple-git';
 import {getRandomInt} from './random';
 
 const env = autoParse({
